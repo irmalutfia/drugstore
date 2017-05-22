@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Qty:
+  = @sales_detail.qty
+p
+  strong Drug:
+  = @sales_detail.drug
+p
+  strong Sale:
+  = @sales_detail.sale
+p
+  strong Prescription:
+  = @sales_detail.prescription
+
+= link_to 'Edit', edit_sales_detail_path(@sales_detail)
+'  |
+= link_to 'Back', sales_details_path

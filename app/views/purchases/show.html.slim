@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Date:
+  = @purchase.date
+p
+  strong Status:
+  = @purchase.status
+p
+  strong Supplier:
+  = @purchase.supplier
+p
+  strong User:
+  = @purchase.user
+
+= link_to 'Edit', edit_purchase_path(@purchase)
+'  |
+= link_to 'Back', purchases_path

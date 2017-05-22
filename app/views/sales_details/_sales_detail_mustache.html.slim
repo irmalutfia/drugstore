@@ -1,0 +1,25 @@
+= 'sales detail mustache'
+/ .form-group.survey-section-form id="survey_sections_{{index}}" data-id="{{index}}"
+/   .col-md-5.section-name
+/     span
+/       = "Name of "
+/     b
+/       span.section-label-name
+/         = "{{section_label}}"
+/     span
+/       = " "
+/     b
+/       span.section-counter-name
+/         = "{{section_counter}}"
+/   .col-md-7
+/     .row
+/       .col-md-10
+/         .form-group
+/           = text_field_tag "survey[sections_attributes][{{index}}][label]", "", class: "form-control section-name", id: "survey_sections_attributes_{{index}}_label"
+/           = hidden_field_tag "survey[sections_attributes][{{index}}][id]", "{{id}}", id: "survey_sections_attributes_{{index}}_id"
+/           = hidden_field_tag "survey[sections_attributes][{{index}}][survey_id]", id: "survey_sections_attributes_{{index}}_survey_id"
+/           = hidden_field_tag "survey[sections_attributes][{{index}}][order]", "{{order}}", id: "survey_sections_attributes_{{index}}_order", class: "section-order"
+/       .col-md-2
+/         .form-group
+/           = link_to "Remove", "#", class: "remove-link", data: {form: 'new'}
+

@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  port: 5433
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: drugstore_development
+
+test:
+  <<: *default
+  database: drugstore_test
+
+production:
+  <<: *default
+  database: drugstore_production
+  username: drugstore
+  port: 5432
+  password: <%= ENV['DRUGSTORE_DATABASE_PASSWORD'] %>

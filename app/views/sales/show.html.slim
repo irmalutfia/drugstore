@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Date:
+  = @sale.date
+p
+  strong Total:
+  = @sale.total
+p
+  strong User:
+  = @sale.user
+
+= link_to 'Edit', edit_sale_path(@sale)
+'  |
+= link_to 'Back', sales_path

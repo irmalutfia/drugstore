@@ -1,0 +1,25 @@
+= 'Sales detail form'
+/ .form-group.survey-section-form id="survey_sections_#{sec.id.to_s}" data-id="#{sec.id.to_s}"
+/   .col-md-5.section-name
+/     span
+/       = "Name of "
+/     b
+/       span.section-label-name
+/         = "#{sec.survey.section_label}"
+/     span
+/       = " "
+/     b
+/       span.section-counter-name
+/         = section_counter_label(sec.survey.section_counter, i)
+/   .col-md-7
+/     .row
+/       .col-md-10
+/         .form-group
+/           = text_field_tag "survey[sections_attributes][#{sec.id}][label]", sec.label, class: "form-control section-name"
+/           / = hidden_field_tag "survey[sections_attributes][#{sec.id}][survey_id]", sec.survey.id
+/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][id]", sec.id
+/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][order]", sec.order, class: "section-order"
+/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][_destroy]", "0"
+/       .col-md-2
+/         .form-group
+/           = link_to "Remove", "#", class: "remove-link", data: {form: 'edit'}

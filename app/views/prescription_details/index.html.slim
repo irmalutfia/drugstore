@@ -1,0 +1,27 @@
+h1 Listing prescription_details
+
+table
+  thead
+    tr
+      th Qty
+      th Price
+      th Drug
+      th Prescription
+      th
+      th
+      th
+
+  tbody
+    - @prescription_details.each do |prescription_detail|
+      tr
+        td = prescription_detail.qty
+        td = prescription_detail.price
+        td = prescription_detail.drug
+        td = prescription_detail.prescription
+        td = link_to 'Show', prescription_detail
+        td = link_to 'Edit', edit_prescription_detail_path(prescription_detail)
+        td = link_to 'Destroy', prescription_detail, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Prescription detail', new_prescription_detail_path

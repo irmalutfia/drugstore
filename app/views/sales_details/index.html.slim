@@ -1,0 +1,27 @@
+h1 Listing sales_details
+
+table
+  thead
+    tr
+      th Qty
+      th Drug
+      th Sale
+      th Prescription
+      th
+      th
+      th
+
+  tbody
+    - @sales_details.each do |sales_detail|
+      tr
+        td = sales_detail.qty
+        td = sales_detail.drug
+        td = sales_detail.sale
+        td = sales_detail.prescription
+        td = link_to 'Show', sales_detail
+        td = link_to 'Edit', edit_sales_detail_path(sales_detail)
+        td = link_to 'Destroy', sales_detail, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Sales detail', new_sales_detail_path

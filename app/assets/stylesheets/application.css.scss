@@ -1,0 +1,14 @@
+// Bootstrap (always use prefix bs._)
+@import "bs.variables";
+@import "bootstrap-datepicker";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import "bs.overrides";
+@import "jquery-ui/autocomplete";
+// Devise forms
+@import "devise";
+
+.ui-autocomplete{
+  z-index: 1051;
+}

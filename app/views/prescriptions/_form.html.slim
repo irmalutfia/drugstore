@@ -1,0 +1,9 @@
+= simple_form_for(@prescription) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nama_dokter
+    = f.input :nama_apoteker
+
+  .form-actions
+    = f.button :submit

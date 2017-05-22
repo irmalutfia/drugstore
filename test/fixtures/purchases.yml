@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-05-19 21:35:33
+  status: 1
+  supplier: one
+  user: one
+
+two:
+  date: 2017-05-19 21:35:33
+  status: 1
+  supplier: two
+  user: two

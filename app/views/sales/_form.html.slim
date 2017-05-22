@@ -1,0 +1,43 @@
+.sales-form.panel.col-md-4.col-md-offset-4
+  .panel.panel-primary
+    .panel-heading
+      label = 'New Transaction'
+    .panel-body
+      = form_for @sale, remote:true, html: {class: "form-horizontal"} do |f|
+        .row
+          .col-md-12
+            .form-group
+              = f.label :date, class: "control-label col-md-2"
+              .col-md-10
+                = f.date_field :date, class: "form-control"
+                #error_date
+            .form-group
+              = f.label :user, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :user, class: "form-control"
+            .form-group
+              hr
+                label = 'Input Drugs'
+
+            #sales_detail
+              - if @sale.new_record?
+                = render 'sales_details/default_form', sd: @sale.sales_details.first, f: f, sale: @sale
+            .form-group
+              .col-md-12.text-right
+                = f.submit class: "btn btn-primary"
+
+script type="text/html" class="sales-detail-template"
+  = render "sales_details/sales_detail_mustache"
+script type="text/html" class="remove-section-template"
+  = render "sales_details/remove_sales_detail"
+
+/ = simple_form_for(@sale) do |f|
+/   = f.error_notification
+
+/   .form-inputs
+/     = f.input :date
+/     = f.input :total
+/     = f.association :user
+
+/   .form-actions
+/     = f.button :submit

@@ -1,0 +1,11 @@
+= simple_form_for(@prescription_detail) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :qty
+    = f.input :price
+    = f.association :drug
+    = f.association :prescription
+
+  .form-actions
+    = f.button :submit

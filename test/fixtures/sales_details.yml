@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qty: 1
+  drug: one
+  sale: one
+  prescription: one
+
+two:
+  qty: 1
+  drug: two
+  sale: two
+  prescription: two

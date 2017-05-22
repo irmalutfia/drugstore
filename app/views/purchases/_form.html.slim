@@ -1,0 +1,11 @@
+= simple_form_for(@purchase) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :date
+    = f.input :status
+    = f.association :supplier
+    = f.association :user
+
+  .form-actions
+    = f.button :submit

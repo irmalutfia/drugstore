@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qty: 1
+  price: 9.99
+  drug: one
+  prescription: one
+
+two:
+  qty: 1
+  price: 9.99
+  drug: two
+  prescription: two

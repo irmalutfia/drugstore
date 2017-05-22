@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nama_dokter: MyString
+  nama_apoteker: MyString
+
+two:
+  nama_dokter: MyString
+  nama_apoteker: MyString

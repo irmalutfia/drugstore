@@ -1,0 +1,19 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @drug.name
+p
+  strong Stock:
+  = @drug.stock
+p
+  strong Unit:
+  = @drug.unit
+p
+  strong Price:
+  = @drug.price
+
+
+= link_to 'Edit', edit_drug_path(@drug)
+'  |
+= link_to 'Back', drugs_path

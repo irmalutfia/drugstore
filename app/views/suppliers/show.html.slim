@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @supplier.name
+p
+  strong Address:
+  = @supplier.address
+p
+  strong Hp:
+  = @supplier.hp
+
+= link_to 'Edit', edit_supplier_path(@supplier)
+'  |
+= link_to 'Back', suppliers_path

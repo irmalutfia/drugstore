@@ -1,0 +1,12 @@
+$devise-form-margin-top: 45px;
+
+@media(min-width:992px){
+  .devise-form-wrapper {
+    margin-top: $devise-form-margin-top;
+  }
+}
+@media(min-width:1200px){
+  .devise-form-wrapper {
+    margin-top: $devise-form-margin-top;
+  }
+}

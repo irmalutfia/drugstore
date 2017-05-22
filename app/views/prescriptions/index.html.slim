@@ -1,0 +1,23 @@
+h1 Listing prescriptions
+
+table
+  thead
+    tr
+      th Nama dokter
+      th Nama apoteker
+      th
+      th
+      th
+
+  tbody
+    - @prescriptions.each do |prescription|
+      tr
+        td = prescription.nama_dokter
+        td = prescription.nama_apoteker
+        td = link_to 'Show', prescription
+        td = link_to 'Edit', edit_prescription_path(prescription)
+        td = link_to 'Destroy', prescription, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Prescription', new_prescription_path

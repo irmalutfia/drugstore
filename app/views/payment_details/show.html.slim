@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Date:
+  = @payment_detail.date
+p
+  strong Cash:
+  = @payment_detail.cash
+p
+  strong Debt:
+  = @payment_detail.debt
+p
+  strong Qty:
+  = @payment_detail.qty
+p
+  strong Unit:
+  = @payment_detail.unit
+p
+  strong Drug:
+  = @payment_detail.drug
+
+= link_to 'Edit', edit_payment_detail_path(@payment_detail)
+'  |
+= link_to 'Back', payment_details_path

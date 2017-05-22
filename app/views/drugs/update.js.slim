@@ -1,0 +1,20 @@
+- if @drug.errors.any?
+  - @drug.errors.each do |field, message|
+    | console.log("#{field.to_s}");
+- else
+  | Turbolinks.visit("#{j drugs_path}");
+  / - @submission.errors.each do |field, message|
+  /   | console.log("#{field.to_s}");
+  /   - if field.to_s == 'case_type'
+  /     | var input = $("#submission_case_type_rabies");
+  /   - elsif field.to_s == 'submission_type'
+  /     | var input = $("#submission_submission_type_passive");
+  /   - elsif field.to_s == 'owner'
+  /     | var input = $("#submission_owner_autocomplete");
+  /   - else
+  /     | var input = $("#submission_#{ field.to_s }");
+  /   | var formGroup = input.closest(".form-group");
+  /   | formGroup.addClass("has-error");
+  /   | formGroup.find("#error_#{ field.to_s }").html("<div class='error-msg text-danger'>#{ message }</div>");
+/ - else
+/   | Turbolinks.visit("#{j edit_submission_path(@submission)}");
