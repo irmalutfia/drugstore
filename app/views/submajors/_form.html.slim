@@ -1,0 +1,12 @@
+/ = simple_form_for(@submajor) do |f|
+/   = f.error_notification
+
+/   .form-inputs
+/     = f.input :konsentrasi
+/     = f.association :major
+
+/   .form-actions
+/     = f.button :submit
+= sm.hidden_field :id
+= sm.label :konsentrasi, class: "control-label"
+= sm.text_field :konsentrasi, class: "form-control"

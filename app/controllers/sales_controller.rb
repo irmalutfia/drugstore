@@ -75,7 +75,10 @@ class SalesController < ApplicationController
         :date,
         :total,
         :user_id,
+        :member_id,
+        :is_member,
         sales_details_attributes: [
+          :id,
           :qty,
           :drug_id,
           :sale_id,
@@ -83,4 +86,6 @@ class SalesController < ApplicationController
         ]
       )
     end
+
+
 end

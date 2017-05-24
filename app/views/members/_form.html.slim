@@ -1,0 +1,54 @@
+/ .member-form.col-md-6.col-md-offset-3
+/   .panel.panel-primary
+/     .panel-heading
+/       label = 'New Member'
+/     .panel-body
+= form_for member, remote:true, html: {class: "form-horizontal"} do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label :name, class: "control-label col-md-2"
+        .col-md-10
+          = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :sex, class: "control-label col-md-2"
+        .col-md-10
+          - Member.sexes.each do |k, v|
+            .radio
+              label
+                = f.radio_button :sex, k
+                = k.titleize
+      .form-group
+        = f.label :age, class: "control-label col-md-2"
+        .col-md-4
+          = f.number_field :age, class: "form-control"
+        = f.label "tahun", class: "control-label col-md-2"
+      .form-group
+        = f.label :born, class: "control-label col-md-2"
+        .col-md-10
+          = f.date_field :born, class: "form-control"
+      .form-group
+        = f.label :email, class: "control-label col-md-2"
+        .col-md-10
+          = f.email_field :email, class: "form-control"
+      .form-group
+        - hobby = [[1, 'Reading'], [2, 'Fishing'], [3, 'Writing'], [4, 'Football'], [5, 'Swimming'], [6, 'Others']]
+        = f.label :hobby, class: "control-label col-md-2"
+        .col-md-10
+          / - hobby.each do |k, v|
+          /   label
+          /     = f.check_box :hobby, {}, k
+          /     = v.titleize
+
+          = f.collection_check_boxes :hobby, hobby, :first, :last
+      .form-group
+        = f.label :address, class: "control-label col-md-2"
+        .col-md-10
+          = f.text_area :address, class: "form-control"
+      .form-group
+        = f.label :phone, class: "control-label col-md-2"
+        .col-md-10
+          = f.phone_field :phone, class: "form-control"
+      .form-group
+        .col-md-12.text-right
+          = f.submit class: "btn btn-primary"

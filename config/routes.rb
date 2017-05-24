@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :submajors
+  resources :majors
+  resources :members
   resources :payment_details
   resources :payments
   resources :purchases

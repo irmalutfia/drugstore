@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Konsentrasi:
+  = @submajor.konsentrasi
+p
+  strong Major:
+  = @submajor.major
+
+= link_to 'Edit', edit_submajor_path(@submajor)
+'  |
+= link_to 'Back', submajors_path

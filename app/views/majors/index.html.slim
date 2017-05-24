@@ -1,0 +1,21 @@
+h1 Listing majors
+
+table
+  thead
+    tr
+      th Jurusan
+      th
+      th
+      th
+
+  tbody
+    - @majors.each do |major|
+      tr
+        td = major.jurusan
+        td = link_to 'Show', major
+        td = link_to 'Edit', edit_major_path(major)
+        td = link_to 'Destroy', major, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Major', new_major_path

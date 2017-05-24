@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @member.name
+p
+  strong Age:
+  = @member.age
+p
+  strong Age unit:
+  = @member.age_unit
+p
+  strong Hobby:
+  = @member.hobby
+p
+  strong Address:
+  = @member.address
+p
+  strong Phone:
+  = @member.phone
+
+= link_to 'Edit', edit_member_path(@member)
+'  |
+= link_to 'Back', members_path

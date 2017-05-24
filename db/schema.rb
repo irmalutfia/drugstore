@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520015056) do
+ActiveRecord::Schema.define(version: 20170523074938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,26 @@ ActiveRecord::Schema.define(version: 20170520015056) do
     t.decimal  "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "majors", force: :cascade do |t|
+    t.string   "jurusan"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.integer  "age_unit"
+    t.text     "address"
+    t.string   "phone"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "sex"
+    t.datetime "born"
+    t.string   "email"
+    t.integer  "hobby",      default: [],              array: true
   end
 
   create_table "payment_details", force: :cascade do |t|
@@ -86,10 +106,12 @@ ActiveRecord::Schema.define(version: 20170520015056) do
 
   create_table "sales", force: :cascade do |t|
     t.datetime "date"
-    t.decimal  "total"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "is_member"
+    t.integer  "member_id"
+    t.index ["member_id"], name: "index_sales_on_member_id", using: :btree
     t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 
@@ -103,6 +125,14 @@ ActiveRecord::Schema.define(version: 20170520015056) do
     t.index ["drug_id"], name: "index_sales_details_on_drug_id", using: :btree
     t.index ["prescription_id"], name: "index_sales_details_on_prescription_id", using: :btree
     t.index ["sale_id"], name: "index_sales_details_on_sale_id", using: :btree
+  end
+
+  create_table "submajors", force: :cascade do |t|
+    t.string   "konsentrasi"
+    t.integer  "major_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["major_id"], name: "index_submajors_on_major_id", using: :btree
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -126,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170520015056) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -137,8 +168,10 @@ ActiveRecord::Schema.define(version: 20170520015056) do
   add_foreign_key "prescription_details", "prescriptions"
   add_foreign_key "purchases", "suppliers"
   add_foreign_key "purchases", "users"
+  add_foreign_key "sales", "members"
   add_foreign_key "sales", "users"
   add_foreign_key "sales_details", "drugs"
   add_foreign_key "sales_details", "prescriptions"
   add_foreign_key "sales_details", "sales"
+  add_foreign_key "submajors", "majors"
 end

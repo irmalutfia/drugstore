@@ -1,0 +1,9 @@
+#modal_new_member.modal.fade tabindex="-1" role="dialog"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal"
+          span &times;
+        h4.modal-title New Member
+      .modal-body
+        = render 'members/form', member: Member.new

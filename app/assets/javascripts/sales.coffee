@@ -6,6 +6,40 @@ window.write_total_price = () ->
 
   $("#sales_detail_total_price").text("Rp.#{total}")
 
+window.member_autocomplete = () ->
+  # autocomplete for member
+  sale_member = $(".sale-member-autocomplete").autocomplete
+    minLength: 1
+    source: (request, response) ->
+      $.ajax
+        url: $(".sale-member-autocomplete").data("source")
+        dataType: 'json'
+        data:
+          by_member_name:
+            keyword: request.term
+        success: (data) ->
+          response data
+          return
+      return
+    select: (event, ui) ->
+      $(".sale-member-autocomplete").val ui.item.name
+      $("#sale_member_id").val "#{ui.item.id}"
+      false
+    response: (event, ui) ->
+      # $("#sample_owner_not_found").remove()
+      # if ui.content.length is 0
+        # $(".sale-member-autocomplete").after "<div id='sample_owner_not_found' class='help-block'><span class='text-danger'>owner not found</span></div>"
+        # $("#sample_owner_id").val ""
+      # else
+        # $("sample_owner_not_found").remove()
+      return
+
+  # owner autocomplete menu formater
+  unless sale_member.data("ui-autocomplete") is undefined
+    sale_member.data("ui-autocomplete")._renderItem = (ul, item) ->
+      content = "#{item.name}, #{item.id}"
+      $("<li>").append("<a>" + content + "</a>").appendTo ul
+
 window.drug_autocomplete = () ->
   # autocomplete for drugs
   sale_drug = $(".drug-autocomplete").autocomplete
@@ -68,6 +102,38 @@ window.drug_autocomplete = () ->
       $("<li>").append("<a>" + content + "</a>").appendTo ul
 ready = ->
   drug_autocomplete()
-  console.log("hello")
-# $(document).ready(ready);
+  member_autocomplete()
+
+  # secara otomatis mencentang/uncentang checkbox jika ada/tidak ada member
+  $("body").on "change", ".sale-member-autocomplete", () ->
+    any_member = $("#sale_member_autocomplete").val()
+    length = any_member.length
+    if length > 0
+      $("#sale_is_member").attr('checked', true)
+    else
+      $("#sale_is_member").attr('checked', false)
+
+  $("body").on "change", ".drug-qty", () ->
+    len = $(this).data("row")
+    qty = $(this).val()
+    price = $("#sale_sales_details_attributes_#{len}_price").val()
+    sub_total = parseInt(qty)*parseInt(price)
+    console.log(price)
+    console.log(qty)
+    console.log(sub_total)
+    $("#sub_total_#{len}").val(sub_total)
+    write_total_price()
+
 $(document).on('turbolinks:load', ready);
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,9 +23,9 @@ table.table.table-bordered#drugs_table
             = sd.hidden_field :id
             = sd.hidden_field :_destroy, class: "destroy-#{sd.object.id}"
           td
-            = sd.number_field :qty, class: "form-control drug-qty", data: { row: sd.object.id }
+            = sd.number_field "sale[sales_details][#{sd.object.id}][qty]", class: "form-control drug-qty", data: { row: sd.object.id }
           td
-            = sd.number_field :price, class: "form-control", :readonly => true
+            = sd.number_field "sale[sales_details][#{sd.object.id}][price]", class: "form-control drug-price", :readonly => true
           td.text-right
             - sub_total = sd.object.qty.to_i * sd.object.price.to_i
             - total = total + sub_total

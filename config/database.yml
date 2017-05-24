@@ -20,5 +20,5 @@ production:
   <<: *default
   database: drugstore_production
   username: drugstore
-  port: 5432
+  port: 5433
   password: <%= ENV['DRUGSTORE_DATABASE_PASSWORD'] %>

@@ -1,2 +1,12 @@
-h1 Welcome#index
-p Find me in app/views/welcome/index.html.slim
+.form-wrapper
+  .row
+    .col-md-4.col-md-offset-4
+      .panel.panel-primary
+        .panel-heading
+          h4 MENU
+        .panel-body
+          = link_to "New Sales", new_sale_path
+          br
+          = link_to "New Drug", new_drug_path
+          br
+          = link_to "New Member", new_member_path

@@ -54,7 +54,7 @@ gem 'devise', '~> 4.2.0'
 
 gem 'has_scope'
 
-gem 'simple_form'
+# gem 'simple_form'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 

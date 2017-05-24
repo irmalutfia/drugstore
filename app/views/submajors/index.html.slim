@@ -1,0 +1,23 @@
+h1 Listing submajors
+
+table
+  thead
+    tr
+      th Konsentrasi
+      th Major
+      th
+      th
+      th
+
+  tbody
+    - @submajors.each do |submajor|
+      tr
+        td = submajor.konsentrasi
+        td = submajor.major
+        td = link_to 'Show', submajor
+        td = link_to 'Edit', edit_submajor_path(submajor)
+        td = link_to 'Destroy', submajor, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Submajor', new_submajor_path

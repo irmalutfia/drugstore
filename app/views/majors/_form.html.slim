@@ -1,0 +1,28 @@
+/ = simple_form_for(@major) do |f|
+/   = f.error_notification
+
+/   .form-inputs
+/     = f.input :jurusan
+
+/   .form-actions
+/     = f.button :submit
+.sales-form.panel.col-md-4.col-md-offset-4
+  .panel.panel-primary
+    .panel-heading
+      label = 'Major Form'
+    .panel-body
+      = form_for @major, remote:true, html: {class: "form-horizontal"} do |f|
+        .row
+          .col-md-12
+            .form-group
+              = f.label :jurusan, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :jurusan, class: "form-control"
+            .form-group
+              / - if @major.new_record?
+              - submajors = @major.submajors.build
+              = f.fields_for :submajors, submajors do |sm|
+                = render 'submajors/form', sm: sm, major: @major
+            .form-group
+              .col-md-12.text-right
+                = f.submit class: "btn btn-primary"
