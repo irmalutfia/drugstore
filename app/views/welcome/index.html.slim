@@ -5,8 +5,25 @@
         .panel-heading
           h4 MENU
         .panel-body
-          = link_to "New Sales", new_sale_path
+          = link_to "Sales", sales_path
           br
-          = link_to "New Drug", new_drug_path
+          = link_to "Purchase", purchases_path
           br
-          = link_to "New Member", new_member_path
+          = link_to "Payment", payments_path
+          br
+          = link_to "Report", "#"
+          br
+          = link_to "Drug", drugs_path
+          br
+          = link_to "Supplier", suppliers_path
+          br
+          = link_to "Prescription", prescriptions_path
+          br
+          = link_to "Member", members_path
+          br
+          - if current_user
+            = link_to "Your profile",edit_user_registration_path
+            br
+            = link_to "Sign_out",destroy_user_session_path,method: :delete
+          - else
+            = link_to "Sign_in",new_user_session_path

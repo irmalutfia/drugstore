@@ -1,6 +1,6 @@
-h1 Listing payments
+h1 Listing Payment
 
-table
+table.table.table-stripped
   thead
     tr
       th Invoice
@@ -11,19 +11,50 @@ table
       th
       th
       th
-
   tbody
     - @payments.each do |payment|
-      tr
-        td = payment.invoice
-        td = payment.total
-        td = payment.date
-        td = payment.status
-        td = payment.purchase
-        td = link_to 'Show', payment
-        td = link_to 'Edit', edit_payment_path(payment)
-        td = link_to 'Destroy', payment, data: { confirm: 'Are you sure?' }, method: :delete
-
+        tr
+          td = payment.invoice
+          td = payment.total
+          td = payment.date
+          td = payment.status
+          td = payment.purchase_id
+          td = link_to 'Show', payment
+          td = link_to 'Edit', edit_payment_path(payment)
+          td = link_to 'Destroy', payment, data: { confirm: 'Are you sure?' }, method: :delete
 br
+.row
+  .form-group
+    .col-md-1
+      = link_to 'New Payment', new_payment_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"
+/ h1 Listing payments
 
-= link_to 'New Payment', new_payment_path
+/ table
+/   thead
+/     tr
+/       th Invoice
+/       th Total
+/       th Date
+/       th Status
+/       th Purchase
+/       th
+/       th
+/       th
+
+/   tbody
+/     - @payments.each do |payment|
+/       tr
+/         td = payment.invoice
+/         td = payment.total
+/         td = payment.date
+/         td = payment.status
+/         td = payment.purchase
+/         td = link_to 'Show', payment
+/         td = link_to 'Edit', edit_payment_path(payment)
+/         td = link_to 'Destroy', payment, data: { confirm: 'Are you sure?' }, method: :delete
+
+/ br
+
+/ = link_to 'New Payment', new_payment_path

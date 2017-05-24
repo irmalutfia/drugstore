@@ -1,6 +1,6 @@
-h1 Listing purchases
+h1 Listing Purchase
 
-table
+table.table.table-stripped
   thead
     tr
       th Date
@@ -10,18 +10,47 @@ table
       th
       th
       th
-
   tbody
     - @purchases.each do |purchase|
-      tr
-        td = purchase.date
-        td = purchase.status
-        td = purchase.supplier
-        td = purchase.user
-        td = link_to 'Show', purchase
-        td = link_to 'Edit', edit_purchase_path(purchase)
-        td = link_to 'Destroy', purchase, data: { confirm: 'Are you sure?' }, method: :delete
-
+        tr
+          td = purchase.date
+          td = purchase.status
+          td = purchase.supplier.try(:name)
+          td = purchase.user.try(:username)
+          td = link_to 'Show', purchase
+          td = link_to 'Edit', edit_purchase_path(purchase)
+          td = link_to 'Destroy', purchase, data: { confirm: 'Are you sure?' }, method: :delete
 br
+.row
+  .form-group
+    .col-md-1
+      = link_to 'New Purchase', new_purchase_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"
+/ h1 Listing purchases
 
-= link_to 'New Purchase', new_purchase_path
+/ table
+/   thead
+/     tr
+/       th Date
+/       th Status
+/       th Supplier
+/       th User
+/       th
+/       th
+/       th
+
+/   tbody
+/     - @purchases.each do |purchase|
+/       tr
+/         td = purchase.date
+/         td = purchase.status
+/         td = purchase.supplier
+/         td = purchase.user
+/         td = link_to 'Show', purchase
+/         td = link_to 'Edit', edit_purchase_path(purchase)
+/         td = link_to 'Destroy', purchase, data: { confirm: 'Are you sure?' }, method: :delete
+
+/ br
+
+/ = link_to 'New Purchase', new_purchase_path

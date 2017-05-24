@@ -21,4 +21,9 @@ table.table.table-stripped
         td = link_to 'Destroy', supplier, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
-= link_to 'New Supplier', new_supplier_path , class: 'btn btn-primary'
+.row
+  .form-group
+    .col-md-1
+      = link_to 'New Supplier', new_supplier_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"

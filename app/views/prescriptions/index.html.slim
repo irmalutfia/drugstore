@@ -20,4 +20,10 @@ table
 
 br
 
-= link_to 'New Prescription', new_prescription_path
+br
+.row
+  .form-group
+    .col-md-2
+      = link_to 'New Prescription', new_prescription_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"

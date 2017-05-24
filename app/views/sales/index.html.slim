@@ -23,18 +23,9 @@ table.table.table-stripped
           td = link_to 'Edit', edit_sale_path(sale)
           td = link_to 'Destroy', sale, data: { confirm: 'Are you sure?' }, method: :delete
 br
-
-= link_to 'New Sale', new_sale_path, class: "btn btn-primary"
-br
-br
-- if current_user
-  = link_to edit_user_registration_path, class: "item" do |l|
-    span.item-icon: i.glyphicon.glyphicon-user
-    span.item-text = "Your profile"
-  = link_to destroy_user_session_path, class: "item", method: :delete do |l|
-    span.item-icon: i.glyphicon.glyphicon-log-out
-    span.item-text = "Sign_out"
-- else
-  = link_to new_user_session_path, class: "item" do |l|
-    span.item-icon: i.glyphicon.glyphicon-log-in
-    span.item-text = "Sign_in"
+.row
+  .form-group
+    .col-md-1
+      = link_to 'New Sale', new_sale_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"

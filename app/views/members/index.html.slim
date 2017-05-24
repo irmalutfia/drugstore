@@ -1,31 +1,72 @@
-h1 Listing members
-
-table
+table.table.table-stripped
   thead
     tr
       th Name
-      th Age
-      th Age unit
+      th Sex
+      th Age (years)
+      th Born
+      th Email
       th Hobby
       th Address
       th Phone
       th
       th
       th
-
   tbody
     - @members.each do |member|
       tr
         td = member.name
+        td = member.sex
         td = member.age
-        td = member.age_unit
-        td = member.hobby
+        td = member.born
+        td = member.email
+        td = member.hobby.inspect
         td = member.address
         td = member.phone
         td = link_to 'Show', member
         td = link_to 'Edit', edit_member_path(member)
         td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
-
 br
 
-= link_to 'New Member', new_member_path
+.row
+  .form-group
+    .col-md-1
+      = link_to 'New Member', new_member_path, class: "btn btn-primary"
+    .col-md-1
+      = link_to 'Back', root_path, class: "btn btn-link"
+
+
+
+
+
+/ h1 Listing members
+
+/ table
+/   thead
+/     tr
+/       th Name
+/       th Age
+/       th Age unit
+/       th Hobby
+/       th Address
+/       th Phone
+/       th
+/       th
+/       th
+
+/   tbody
+/     - @members.each do |member|
+/       tr
+/         td = member.name
+/         td = member.age
+/         td = member.age_unit
+/         td = member.hobby
+/         td = member.address
+/         td = member.phone
+/         td = link_to 'Show', member
+/         td = link_to 'Edit', edit_member_path(member)
+/         td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
+
+/ br
+
+/ = link_to 'New Member', new_member_path

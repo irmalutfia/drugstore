@@ -1,12 +1,44 @@
-= simple_form_for(@payment) do |f|
-  = f.error_notification
+.payments-form.col-md-6.col-md-offset-3
+  .panel.panel-primary
+    .panel-heading
+      label = 'New Payment'
+    .panel-body
+      = form_for @payment, remote:true, html: {class: "form-horizontal"} do |f|
+        .row
+          .col-md-12
+            .form-group
+              = f.label :purchase_id, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :purchase_id, readonly:true, class: "form-control"
+            .form-group
+              = f.label :invoice, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :invoice, class: "form-control"
+            .form-group
+              = f.label :total, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :total, class: "form-control"
+            .form-group
+              = f.label :date, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :date, class: "form-control"
+            .form-group
+              = f.label :status, class: "control-label col-md-2"
+              .col-md-10
+                = f.text_field :status, class: "form-control"
+            .form-group
+              .col-md-12.text-right
+                = f.submit class: "btn btn-primary"
 
-  .form-inputs
-    = f.input :invoice
-    = f.input :total
-    = f.input :date
-    = f.input :status
-    = f.association :purchase
+/ = simple_form_for(@payment) do |f|
+/   = f.error_notification
 
-  .form-actions
-    = f.button :submit
+/   .form-inputs
+/     = f.input :invoice
+/     = f.input :total
+/     = f.input :date
+/     = f.input :status
+/     = f.association :purchase
+
+/   .form-actions
+/     = f.button :submit
