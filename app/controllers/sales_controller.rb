@@ -80,6 +80,7 @@ class SalesController < ApplicationController
         sales_details_attributes: [
           :id,
           :qty,
+          :price,
           :drug_id,
           :sale_id,
           :_destroy

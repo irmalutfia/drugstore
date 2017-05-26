@@ -113,14 +113,16 @@ ready = ->
     else
       $("#sale_is_member").attr('checked', false)
 
+  # member field autofocus ketika checkbox is_member dicentang
+  $("body").on "click", "#sale_is_member", () ->
+    if $("#sale_is_member").attr('checked', true)
+      $("#sale_member_autocomplete").focus()
+
   $("body").on "change", ".drug-qty", () ->
     len = $(this).data("row")
     qty = $(this).val()
     price = $("#sale_sales_details_attributes_#{len}_price").val()
     sub_total = parseInt(qty)*parseInt(price)
-    console.log(price)
-    console.log(qty)
-    console.log(sub_total)
     $("#sub_total_#{len}").val(sub_total)
     write_total_price()
 

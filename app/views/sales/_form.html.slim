@@ -45,12 +45,15 @@
 
             #sales_detail
               - if @sale.new_record?
-                = render 'sales_details/default_form', sd: @sale.sales_details.first, f: f, sale: @sale
+                = render 'sales_details/form', sd: @sale.sales_details.first, f: f, sale: @sale
+              - else
+                = @sale.sales_details.inspect
             .form-group
               .col-md-12.text-right
                 = f.submit class: "btn btn-primary"
 
 = render 'new_member_modal'
+
 / script type="text/html" class="sales-detail-template"
 /   = render "sales_details/sales_detail_mustache"
 / script type="text/html" class="remove-section-template"

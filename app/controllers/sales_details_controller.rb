@@ -69,6 +69,6 @@ class SalesDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sales_detail_params
-      params.require(:sales_detail).permit(:qty, :drug_id, :sale_id, :prescription_id)
+      params.require(:sales_detail).permit(:qty, :drug_id, :sale_id, :prescription_id, :price)
     end
 end

@@ -1,67 +1,37 @@
-.input-group
-  span.input-group-addon
-    i.glyphicon.glyphicon-search
-  input type="text" id="drug_autocomplete" class="form-control drug-autocomplete" data-source="#{drugs_path}"
-hr
-table.table.table-bordered#drugs_table
-  thead
-    tr
-      th.text-center.col-md-4 = "Drug"
-      th.text-center.col-md-2 = "Qty"
-      th.text-center.col-md-2 = "Price"
-      th.text-center.col-md-2 = "Total"
-  tbody
-    - total = 0
-    - unless sale.sales_details.blank?
-      - sales_details = f.object.sales_details.empty? ? f.object.sales_details.build : f.object.sales_details
-      = f.fields_for :sales_details, sd do |sd|
-        tr class="sales-detail-row-#{sd.object.id}"
-          td
-            input type="text" value="#{sd.object.drug.name}" id="drug_name" name="drug_name" class="form-control" disabled="disabled"
-            a href='#' id='remove_drug' data-row="#{sd.object.id}" = "Remove"
-            = sd.hidden_field :drug_id, class: "form-control"
-            = sd.hidden_field :id
-            = sd.hidden_field :_destroy, class: "destroy-#{sd.object.id}"
-          td
-            = sd.number_field "sale[sales_details][#{sd.object.id}][qty]", class: "form-control drug-qty", data: { row: sd.object.id }
-          td
-            = sd.number_field "sale[sales_details][#{sd.object.id}][price]", class: "form-control drug-price", :readonly => true
-          td.text-right
-            - sub_total = sd.object.qty.to_i * sd.object.price.to_i
-            - total = total + sub_total
-            input type='number' class='form-control sub-total' id="sub_total_#{sd.object.id}" name="sub_total_#{sd.object.id}" value="#{sub_total}" disabled="disabled"
+/ .input-group
+/   span.input-group-addon
+/     i.glyphicon.glyphicon-search
+/   input type="text" id="drug_autocomplete" class="form-control drug-autocomplete" data-source="#{drugs_path}"
+/ hr
+/ table.table.table-bordered#drugs_table
+/   thead
+/     tr
+/       th.text-center.col-md-4 = "Drug"
+/       th.text-center.col-md-2 = "Qty"
+/       th.text-center.col-md-2 = "Price"
+/       th.text-center.col-md-2 = "Total"
+/   tbody
+/     - total = 0
+/     - unless sale.sales_details.blank?
+/       - sales_details = f.object.sales_details.empty? ? f.object.sales_details.build : f.object.sales_details
+/       = f.fields_for :sales_details, sd do |sd|
+/         tr class="sales-detail-row-#{sd.object.id}"
+/           td
+/             input type="text" value="#{sd.object.drug.name}" id="drug_name" name="drug_name" class="form-control" disabled="disabled"
+/             a href='#' id='remove_drug' data-row="#{sd.object.id}" = "Remove"
+/             = sd.hidden_field :drug_id, class: "form-control"
+/             = sd.hidden_field :id
+/             = sd.hidden_field :_destroy, class: "destroy-#{sd.object.id}"
+/           td
+/             = sd.number_field "sale[sales_details][#{sd.object.id}][qty]", class: "form-control drug-qty", data: { row: sd.object.id }
+/           td
+/             = sd.number_field "sale[sales_details][#{sd.object.id}][price]", class: "form-control drug-price", :readonly => true
+/           td.text-right
+/             - sub_total = sd.object.qty.to_i * sd.object.price.to_i
+/             - total = total + sub_total
+/             input type='number' class='form-control sub-total' id="sub_total_#{sd.object.id}" name="sub_total_#{sd.object.id}" value="#{sub_total}" disabled="disabled"
 
-  tfoot
-    th.text-center colspan="3" = "TOTAL"
-    th.text-right#sales_detail_total_price
-      = "Rp.#{total}"
-
-  / .form-group
-  /   = sd.label :qty, class: "control-label col-md-2"
-  /   .col-md-10
-  /     = sd.number_field :qty, class: "form-control"
-
-/ .form-group.survey-section-form.hidden id="sale_sales_detail_#{sd.id.to_s}" data-id="#{sd.id.to_s}"
-/   .col-md-5.section-name
-/     span
-/       = "Name of "
-/     b
-/       span.section-label-name
-/         = "#{sec.survey.section_label.humanize.capitalize}"
-/     span
-/       = " "
-/     b
-/       span.section-counter-name
-/         = section_counter_label(sec.survey.section_counter, i)
-/   .col-md-7
-/     .row
-/       .col-md-10
-/         .form-group
-/           = text_field_tag "survey[sections_attributes][#{sec.id}][label]", sec.label, class: "form-control section-name"
-/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][survey_id]", sec.survey.id
-/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][id]", sec.id
-/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][order]", sec.order, class: "section-order"
-/           = hidden_field_tag "survey[sections_attributes][#{sec.id}][_destroy]", "0"
-/       .col-md-2
-/         .form-group
-/           = link_to "Remove", "#", class: "remove-link", data: {form: 'edit'}
+/   tfoot
+/     th.text-center colspan="3" = "TOTAL"
+/     th.text-right#sales_detail_total_price
+/       = "Rp.#{total}"

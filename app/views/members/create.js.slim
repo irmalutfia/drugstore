@@ -9,4 +9,8 @@
     | formGroup.addClass("has-error");
     | formGroup.find("#error_#{field.to_s}").html("<div class='error-msg text-danger'>#{ message }</div>");
 - else
-  | Turbolinks.visit("#{j members_path}");
+  | $('#modal_new_member').modal('hide');
+  / | Turbolinks.visit("#{j members_path}");
+  / - if params[:page] == "members"
+  /   | alert("Data member berhasil ditambahkan");
+  / - elsif params[:page] == "sales"
