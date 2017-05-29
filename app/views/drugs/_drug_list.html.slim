@@ -1,0 +1,7 @@
+tr id="drug_#{drug.id}"
+  td = drug.name
+  td = drug.stock
+  td = drug.unit
+  td = drug.price
+  td = link_to 'Edit', edit_drug_path(drug), remote:true
+  td = link_to 'Destroy', drug,remote: true, data: { confirm: 'Are you sure?' }, method: :delete

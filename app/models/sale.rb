@@ -1,6 +1,6 @@
 class Sale < ApplicationRecord
   belongs_to :user
-  has_many :sales_details
+  has_many :sales_details, dependent: :destroy
   has_many :drugs
   belongs_to :member
   validates :date, presence: true

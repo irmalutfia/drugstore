@@ -43,25 +43,28 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
-    respond_to do |format|
-      if @member.update(member_params)
-        format.html { redirect_to members_path, notice: 'Member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @member }
-      else
-        format.html { render :edit }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-    end
+    @member.update(member_params)
+    respond_with(@member)
+    # respond_to do |format|
+    #   if @member.update(member_params)
+    #     format.html { redirect_to members_path, notice: 'Member was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @member }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @member.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
     @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_with(@member)
+    # respond_to do |format|
+    #   format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

@@ -1,39 +1,34 @@
-table.table.table-stripped
-  thead
-    tr
-      th Name
-      th Sex
-      th Age (years)
-      th Born
-      th Email
-      th Hobby
-      th Address
-      th Phone
-      th
-      th
-      th
-  tbody
-    - @members.each do |member|
-      tr
-        td = member.name
-        td = member.sex
-        td = member.age
-        td = member.born
-        td = member.email
-        td = member.hobby.inspect
-        td = member.address
-        td = member.phone
-        td = link_to 'Show', member
-        td = link_to 'Edit', edit_member_path(member)
-        td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
-br
-
 .row
-  .form-group
-    .col-md-1
-      = link_to 'New Member', new_member_path, class: "btn btn-primary"
-    .col-md-1
-      = link_to 'Back', root_path, class: "btn btn-link"
+  .col-md-7
+    .form-group
+      table.table.table-stripped#member_table
+        thead
+          tr
+            th Name
+            th Sex
+            th Age (years)
+            / th Born
+            th Email
+            th Hobby
+            th Address
+            th Phone
+            th
+            th
+            / th
+        tbody
+          - @members.each do |member|
+            = render 'member_list', member:member
+  .col-md-5
+    .form-group
+      .col-md-4
+        = link_to 'New Member', new_member_path, remote:true, class: "btn btn-primary"
+      .col-md-1
+        = link_to 'Back', root_path, class: "btn btn-link"
+    br
+    br
+    .form-group
+      .col-md-12#member_form
+
 
 
 

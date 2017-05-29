@@ -14,7 +14,7 @@ table.table.table-bordered#drugs_table
     - total = 0
     - unless sale.sales_details.blank?
       - sales_details = f.object.sales_details.empty? ? f.object.sales_details.build : f.object.sales_details
-      = f.fields_for :sales_details, sd do |sd|
+      = f.fields_for :sales_details, sales_details do |sd|
         tr class="sales-detail-row-#{sd.object.id}"
           td
             input type="text" value="#{sd.object.drug.name}" id="drug_name" name="drug_name" class="form-control" disabled="disabled"
@@ -23,9 +23,11 @@ table.table.table-bordered#drugs_table
             = sd.hidden_field :id
             = sd.hidden_field :_destroy, class: "destroy-#{sd.object.id}"
           td
-            = sd.number_field "sale[sales_details][#{sd.object.id}][qty]", class: "form-control drug-qty", data: { row: sd.object.id }
+            = sd.number_field :qty, class: "form-control drug-qty", data: { row: sd.object.id }
+            / "sale[sales_details][#{sd.object.id}][qty]"
           td
-            = sd.number_field "sale[sales_details][#{sd.object.id}][price]", class: "form-control drug-price", :readonly => true
+            = sd.number_field :price , class: "form-control drug-price", :readonly => true
+            / "sale[sales_details][#{sd.object.id}][price]"
           td.text-right
             - sub_total = sd.object.qty.to_i * sd.object.price.to_i
             - total = total + sub_total
@@ -36,14 +38,3 @@ table.table.table-bordered#drugs_table
     th.text-right#sales_detail_total_price
       = "Rp.#{total}"
 
-/ = simple_form_for(@sales_detail) do |f|
-/   = f.error_notification
-
-/   .form-inputs
-/     = f.input :qty
-/     = f.association :drug
-/     = f.association :sale
-/     = f.association :prescription
-
-/   .form-actions
-/     = f.button :submit

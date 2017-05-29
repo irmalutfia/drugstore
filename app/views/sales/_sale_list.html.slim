@@ -1,0 +1,10 @@
+tr id="sales_detail_#{sale.id}"
+  td = sale.date
+  td = current_user.username
+  td = sale.is_member
+  td = sale.member_id
+  / td = sal.qty
+  / td = sal.drug.try(:name)
+  / td = link_to 'Show', sale
+  td = link_to 'Edit', edit_sale_path(sale), remote: true
+  td = link_to 'Destroy', sale, remote: true, data: { confirm: 'Are you sure?' }, method: :delete

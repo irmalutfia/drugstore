@@ -1,6 +1,6 @@
 class PrescriptionDetailsController < ApplicationController
   before_action :set_prescription_detail, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :json, :js
   # GET /prescription_details
   # GET /prescription_details.json
   def index

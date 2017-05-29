@@ -1,7 +1,3 @@
-/ - if params[:page] == "members"
-/   | alert("Data berhasil ditambahkan");
-/ - elsif params[:page] == "sales"
-/   | $('#modal_new_owner').modal('hide');
 - if @member.errors.any?
   - @member.errors.each do |field, message|
     | var input = $('#member_#{field.to_s}');
@@ -10,6 +6,8 @@
     | formGroup.find("#error_#{field.to_s}").html("<div class='error-msg text-danger'>#{ message }</div>");
 - else
   | $('#modal_new_member').modal('hide');
+  | $('#member_table').append("#{j render "members/member_list", member: @member}");
+  | $(".create-form").empty();
   / | Turbolinks.visit("#{j members_path}");
   / - if params[:page] == "members"
   /   | alert("Data member berhasil ditambahkan");

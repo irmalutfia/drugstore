@@ -1,4 +1,4 @@
-.sales-form.col-md-6.col-md-offset-3
+.create-form
   .panel.panel-primary
     .panel-heading
       label = 'New Transaction'
@@ -33,7 +33,7 @@
                 .input-group
                   span.input-group-addon
                     i.glyphicon.glyphicon-search
-                  input type="text" id="sale_member_autocomplete" class="form-control sale-member-autocomplete" value="#{f.object.member.name unless @sale.new_record?}" data-source="#{members_path}"
+                  input type="text" id="sale_member_autocomplete" class="form-control sale-member-autocomplete" value="#{f.object.member.name unless (@sale.new_record? or @sale.member.nil?)}" data-source="#{members_path}"
                   span.input-group-btn
                     = link_to "Add", "#new_sale_member_modal_button", data: { toggle: "modal", target: "#modal_new_member" }, class: "btn btn-default"
                 = f.hidden_field :member_id
@@ -47,14 +47,11 @@
               - if @sale.new_record?
                 = render 'sales_details/form', sd: @sale.sales_details.first, f: f, sale: @sale
               - else
-                = @sale.sales_details.inspect
+                = render 'sales_details/form', f: f, sale: @sale, sd: @sale.sales_details
             .form-group
-              .col-md-12.text-right
+              .col-md-3
                 = f.submit class: "btn btn-primary"
+              .col-md-3
+                = link_to "Cancel", sales_path, remote: true, class: "btn btn-link cancel-form-create"
 
 = render 'new_member_modal'
-
-/ script type="text/html" class="sales-detail-template"
-/   = render "sales_details/sales_detail_mustache"
-/ script type="text/html" class="remove-section-template"
-/   = render "sales_details/remove_sales_detail"

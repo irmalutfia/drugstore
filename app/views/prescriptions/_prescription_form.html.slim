@@ -1,0 +1,22 @@
+= form_for @prescription, remote:true, html: {class: "form-horizontal"} do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label :nama_dokter, class: "control-label col-md-2"
+        .col-md-10
+          = f.text_field :nama_dokter, class: "form-control"
+      .form-group
+        = f.label :nama_apoteker, class: "control-label col-md-2"
+        .col-md-10
+          = f.text_field :nama_apoteker, class: "form-control"
+      .form-group
+        .col-md-12.text-right
+          = link_to "Add Prescription's Drug", new_prescription_detail_path, remote:true, class: "btn btn-link"
+  hr
+      = render "prescription_details/form", f: f, prescription: @prescription
+  hr
+      .form-group
+        .col-md-2.col-md-offset-6
+          = link_to "Cancel", prescriptions_path, remote: true, class: "btn btn-link cancel-form-create"
+        .col-md-4
+          = f.submit class: "btn btn-primary"

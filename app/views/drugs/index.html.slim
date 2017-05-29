@@ -1,31 +1,27 @@
-h1 Listing drugs
-
-table.table.table-striped
-  thead
-    tr
-      th Name
-      th Stock
-      th Unit
-      th Price
-      / th
-      th
-      th
-
-  tbody
-    - @drugs.each do |drug|
-      tr
-        td = drug.name
-        td = drug.stock
-        td = drug.unit
-        td = drug.price
-        / td = link_to 'Show', drug
-        td = link_to 'Edit', edit_drug_path(drug)
-        td = link_to 'Destroy', drug, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
 .row
-  .form-group
-    .col-md-1
-      = link_to 'New Drug', new_drug_path, class: "btn btn-primary"
-    .col-md-1
-      = link_to 'Back', root_path, class: "btn btn-link"
+  .col-md-7
+    .form-group
+      table.table.table-striped#drug_table
+        thead
+          tr
+            th Name
+            th Stock
+            th Unit
+            th Price
+            th
+            th
+
+        tbody
+          - @drugs.each do |drug|
+            = render "drug_list", drug: drug
+  .col-md-5
+    .form-group
+      .col-md-4
+        = link_to 'New Drug', new_drug_path, remote: true, class: "btn btn-primary"
+      .col-md-1
+        = link_to 'Back', root_path, class: "btn btn-link"
+    br
+    br
+    br
+    .form-group
+      .col-md-12#drug_form

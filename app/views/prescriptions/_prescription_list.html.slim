@@ -1,0 +1,6 @@
+tr id="prescription_#{prescription.id}"
+  td = prescription.nama_dokter
+  td = prescription.nama_apoteker
+  / td = link_to 'Show', prescription
+  td = link_to 'Edit', edit_prescription_path(prescription), remote:true
+  td = link_to 'Destroy', prescription, remote: true, data: { confirm: 'Are you sure?' }, method: :delete

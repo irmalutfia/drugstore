@@ -1,0 +1,7 @@
+tr id="supplier_#{supplier.id}"
+  td = supplier.name
+  td = supplier.address
+  td = supplier.hp
+  / td = link_to 'Show', supplier
+  td = link_to 'Edit', edit_supplier_path(supplier), remote:true
+  td = link_to 'Destroy', supplier, remote:true, data: { confirm: 'Are you sure?' }, method: :delete

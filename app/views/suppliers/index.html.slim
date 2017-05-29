@@ -1,29 +1,27 @@
-h1 Listing suppliers
-
-table.table.table-stripped
-  thead
-    tr
-      th Name
-      th Address
-      th Hp
-      / th
-      th
-      th
-
-  tbody
-    - @suppliers.each do |supplier|
-      tr
-        td = supplier.name
-        td = supplier.address
-        td = supplier.hp
-        / td = link_to 'Show', supplier
-        td = link_to 'Edit', edit_supplier_path(supplier)
-        td = link_to 'Destroy', supplier, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
 .row
-  .form-group
-    .col-md-1
-      = link_to 'New Supplier', new_supplier_path, class: "btn btn-primary"
-    .col-md-1
-      = link_to 'Back', root_path, class: "btn btn-link"
+  .col-md-6
+    .form-group
+      table.table.table-stripped#supplier_table
+        thead
+          tr
+            th Name
+            th Address
+            th Hp
+            / th
+            th
+            th
+
+        tbody
+          - @suppliers.each do |supplier|
+            = render "supplier_list", supplier: supplier
+
+  .col-md-6
+    .form-group
+      .col-md-2
+        = link_to 'New Supplier', new_supplier_path,remote: true, class: "btn btn-primary"
+      .col-md-2
+        = link_to 'Back', root_path, class: "btn btn-link"
+    br
+    br
+    .form-group
+      .col-md-12#supplier_form

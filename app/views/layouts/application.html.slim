@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    title = Rails.application.secrets.app_name
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    / = render 'fonts'
+    = stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    / = render "sidebar"
+    = render 'layouts/notifications'
+
+    .container
+      .loading-backdrop
+        .loading-message-block
+          .row.text-center
+            .col-md-offset-4.col-md-4
+              / .alert.alert-warning role="alert": b.loading-message
+
+
+    #content
+      .main-content
+        .container-fluid
+          .row
+            .col-md-12
+              = yield
+
+      / #modal.modal.fade tabindex="-1" role="dialog" aria-labelledby="Modal"
+      /   .modal-dialog role="document"
+      /     .modal-content
+      /       .modal-header
+      /         button type="button" class="close" data-dismiss="modal" aria-label="Close": span aria-hidden="true" &times;
+      /         h4.modal-title
+      /       .modal-body
+      /       .modal-footer
+
+
+/ <!DOCTYPE html>
+/ <html>
+/   <head>
+/     <title>Drugstore</title>
+/     <%= csrf_meta_tags %>
+
+/     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+/     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+/   </head>
+
+/   <body>
+/     <%= yield %>
+/   </body>
+/ </html>

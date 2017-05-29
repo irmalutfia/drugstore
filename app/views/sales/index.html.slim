@@ -1,31 +1,40 @@
-h1 Listing sales
-
-table.table.table-stripped
-  thead
-    tr
-      th Date
-      th User
-      th Qty
-      th Drug's Name
-      th
-      th
-      th
-  tbody
-    - @sales.each do |sale|
-      - sd = sale.sales_details
-      - sd.each do |sal|
-        tr
-          td = sale.date
-          td = current_user.email
-          td = sal.qty
-          td = sal.drug.try(:name)
-          td = link_to 'Show', sale
-          td = link_to 'Edit', edit_sale_path(sale)
-          td = link_to 'Destroy', sale, data: { confirm: 'Are you sure?' }, method: :delete
-br
 .row
-  .form-group
-    .col-md-1
-      = link_to 'New Sale', new_sale_path, class: "btn btn-primary"
-    .col-md-1
-      = link_to 'Back', root_path, class: "btn btn-link"
+  .col-md-6
+    .form-group
+      table.table.table-stripped#sale_table
+        thead
+          tr
+            th Date
+            th User
+            th Is Member
+            th Member_id
+            / th Qty
+            / th Drug's Name
+            th
+            th
+        tbody
+          - @sales.each do |sale|
+            = render "sales/sale_list", sale: sale
+            / - sd = sale.sales_details
+            / - sd.each do |sal|
+            / tr id="sales_detail_#{sale.id}"
+            /   td = sale.date
+            /   td = current_user.username
+            /   td = sale.is_member
+            /   td = sale.member_id
+            /   / td = sal.qty
+            /   / td = sal.drug.try(:name)
+            /   / td = link_to 'Show', sale
+            /   td = link_to 'Edit', edit_sale_path(sale), remote: true
+            /   td = link_to 'Destroy', sale, remote: true, data: { confirm: 'Are you sure?' }, method: :delete
+
+  .col-md-6
+    .form-group
+      .col-md-2
+        = link_to 'New Sale', new_sale_path, remote:true, class: "btn btn-primary"
+      .col-md-2
+        = link_to 'Back', root_path, class: "btn btn-link"
+    br
+    br
+    .form-group
+      .col-md-12#sale_form

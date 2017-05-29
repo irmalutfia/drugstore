@@ -1,4 +1,4 @@
-.supplier-form.col-md-4.col-md-offset-4
+.create-form
   .panel.panel-primary
     .panel-heading
       label = 'Create new Supplier'
@@ -19,15 +19,8 @@
               .col-md-10
                 = f.text_field :hp, class: "form-control"
             .form-group
-              .col-md-12.text-right
+              .col-md-3
                 = f.submit class: "btn btn-primary"
-/ = simple_form_for(@supplier) do |f|
-/   = f.error_notification
+              .col-md-2
+                = link_to "Cancel", suppliers_path, remote: true, class: "btn btn-link cancel-form-create"
 
-/   .form-inputs
-/     = f.input :name
-/     = f.input :address
-/     = f.input :hp
-
-/   .form-actions
-/     = f.button :submit

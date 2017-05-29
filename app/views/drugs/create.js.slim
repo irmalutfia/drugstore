@@ -2,7 +2,9 @@
   - @drug.errors.each do |field, message|
     | console.log("#{field.to_s}");
 - else
-  | Turbolinks.visit("#{j drugs_path}");
+  | $("#drug_table").append("#{j render "drugs/drug_list", drug: @drug}");
+  | $("#drug_form").empty()
+  / | Turbolinks.visit("#{j drugs_path}");
   / - @submission.errors.each do |field, message|
   /   | console.log("#{field.to_s}");
   /   - if field.to_s == 'case_type'

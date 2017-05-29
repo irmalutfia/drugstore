@@ -1,4 +1,4 @@
-.purchases-form.col-md-6.col-md-offset-3
+.create-form
   .panel.panel-primary
     .panel-heading
       label = 'New Purchase'
@@ -33,10 +33,41 @@
               .col-md-10
                 = text_field_tag "purchase[user_id]", "#{user}", class: "purchase[user_id] string optional form-control", readonly: true
                 = hidden_field_tag("purchase[user_id]", value= "#{value}")
+                      .form-group
+                        .col-md-3
+                          = f.label :section
+                        .col-md-9
+                          div class="form-group string optional"
+                            = link_to "Manage section" , "#collapseExample", class: "", role: "button", data: {toggle: "collapse"}, aria: {expanded: "false", controls: "collapseExample"}
+            .form-group
+              div class="collapse" id="collapseExample"
+                div class="well"
+
+      .row
+        .col-md-12
+          .form-group
+            .col-md-5
+              | Label for sections
+            .col-md-7
+              .form-group
+                - if survey.language == 'bahasa_indonesia'
+                  - section_labels =  "Bagian, Bab, Sub Kuesioner"
+                - elsif survey.language == 'english'
+                  - section_labels =  "Part, Section, Sub Quetionnaire"
+                - else
+                  - section_labels =  "Select language first"
+                = f.input :section_label, label: false ,placeholder: "#{section_labels}", prompt: false, input_html: {class: "section-labels is-disabled"},:disabled => (true if survey.new_record?)
+                / , disabled: "#{survey.new_record? ? true : false}"
+                = link_to "Create my own label", "#"
+
             .form-group
               .col-md-12
-                = link_to 'Payment', new_payment_path, class: "btn btn-link col-md-6"
-                = f.submit class: "btn btn-primary col-md-6"
+                .col-md-3
+                  = link_to 'Payment', new_payment_path, class: "btn btn-link col-md-6"
+                .col-md-3
+                  = link_to 'Cancel', purchases_path, remote: true, class: "btn btn-link cancel-form-create"
+                .col-md-6.text-right
+                  = f.submit class: "btn btn-primary col-md-6", remote:true
 
 / = simple_form_for(@purchase) do |f|
 /   = f.error_notification
